@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
-function FriendsList() {
-    const [friendsList, setFriendsList] = useState([]);
-    
+function FriendsList(){
+
+    const [friendsList, setFriendsList] = useState()
+
     const getData = e => {
         // e.preventDefault();
         axiosWithAuth()
@@ -22,15 +23,21 @@ function FriendsList() {
     useEffect(() => {
         getData()
     }, [])
+
     return(
-        <div>      
-            {friendsList?.map((friendsList) => (
-                <div> 
-                    <p>{friendsList.username}</p>
-                    <p>{friendsList.password}</p>
-                </div>
-            ))}
-        </div>
+        <div>
+            
+        {friendsList?.map((friendsList) => (
+             
+          <div> 
+          <p>{friendsList.name}</p>
+          <p>{friendsList.age}</p>
+          <p>{friendsList.email}</p>
+          </div>
+        ))}
+       
+
+    </div>
     )
 }
 
